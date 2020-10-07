@@ -18,11 +18,11 @@ namespace Calculator
         }
 
         public Fraction Add(Fraction fraction) {
-            return new Fraction(Num + fraction.Num, Den + fraction.Den);
+            return new Fraction((Num * fraction.Den) + (fraction.Num * Den), Den * fraction.Den);
         }
 
         public Fraction Subtract(Fraction fraction) {
-            return new Fraction(Num + (-fraction.Num) , Den + (-fraction.Den));
+            return new Fraction((Num * fraction.Den) - (fraction.Num * Den), Den * fraction.Den);
         }
 
         public Fraction Multiply(Fraction fraction) {
@@ -35,6 +35,14 @@ namespace Calculator
             }
             return new Fraction(Num * fraction.Den, Den * fraction.Num);
         }
+
+        public static Fraction operator +(Fraction x, Fraction y) => x.Add(y);
+
+        public static Fraction operator -(Fraction x, Fraction y) => x.Subtract(y);
+        public static Fraction operator *(Fraction x, Fraction y) => x.Multiply(y);
+        public static Fraction operator /(Fraction x, Fraction y) => x.Divide(y);
+
+
 
         /// <inheritdoc />
         public override string ToString() {
