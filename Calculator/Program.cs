@@ -20,6 +20,9 @@ namespace Calculator
 
             Console.WriteLine(oneHalf.Divide(oneFourth));
             Console.WriteLine(oneHalf / oneFourth);
+
+            Console.WriteLine(oneHalf);
+            Console.WriteLine(oneFourth);
         }
     }
 }

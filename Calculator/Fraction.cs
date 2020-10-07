@@ -42,11 +42,22 @@ namespace Calculator
         public static Fraction operator *(Fraction x, Fraction y) => x.Multiply(y);
         public static Fraction operator /(Fraction x, Fraction y) => x.Divide(y);
 
+        public static implicit operator Fraction(int num) => new Fraction(2, 1);
 
-
+        public static implicit operator int(Fraction fraction) => fraction.Num / fraction.Den;
         /// <inheritdoc />
         public override string ToString() {
             return $"{Num}/{Den}";
+        }
+
+        /// <inheritdoc />
+        public override bool Equals(object? obj) {
+            if (obj == null) {
+                return false;
+            }
+            var fraction = (Fraction)obj;
+
+            return Num == fraction.Num && Den == fraction.Den;
         }
     }
 }
